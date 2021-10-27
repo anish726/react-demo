@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import GuestGreeting from './component/GuestGreeting';
+import Input from './component/Input';
+import UserGreeting from './component/UserGreeting';
+import Pages from './hideConditional/pages';
+import MailBox from './mailbox/MailBox';
 
-function App() {
+const App = () => {
+  const haeder = 'Hello World';
+  const [name, setName] = useState(haeder);
+   const [isLoggedIn, setIsLoggedIn] = useState(false);
+   
+
+  const changeHeader = () =>{
+    const newHeader= 'i am ansh'
+    setName(newHeader)
+    console.log(name)
+  }
+  
+ 
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+     
+      <h3>{name}</h3>
+     <button onClick={changeHeader}>Click Me</button>
+     {isLoggedIn ? <UserGreeting/> : <GuestGreeting/>}
+
+     <MailBox/>
+
+     <Pages/>
+     <Input/>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
